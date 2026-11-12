@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AETHER // STUDIO — Next-Gen Spatial Web & Digital Experiences</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            void: '#05060a',
+            surface: '#0b0d14',
+          },
+          animation: {
+            'marquee': 'marquee 28s linear infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'pulse-slow': 'pulse 5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+          keyframes: {
+            marquee: {
+              '0%': { transform: 'translateX(0%)' },
+              '100%': { transform: 'translateX(-50%)' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      --accent: #00f0ff;
+      --accent-rgb: 0, 240, 255;
+      --accent-secondary: #7000ff;
+      --accent-secondary-rgb: 112, 0, 255;
+    }
+
+    body {
+      background-color: #05060a;
+      color: #f8fafc;
+      overflow-x: hidden;
+    }
+
+    /* Ambient Glow Blobs */
+    .ambient-glow {
+      background: radial-gradient(circle at 50% 50%, rgba(var(--accent-rgb), 0.16), rgba(var(--accent-secondary-rgb), 0.08) 45%, transparent 70%);
+      transition: background 0.6s ease;
+    }
+
+    /* Glassmorphism Cards */
+    .glass-panel {
+      background: rgba(13, 16, 26, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Interactive Bento Spotlight */
+    .bento-card {
+      position: relative;
+      background: rgba(13, 16, 26, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      overflow: hidden;
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease;
+    }
+
+    .bento-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        500px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(var(--accent-rgb), 0.14),
+        transparent 40%
+      );
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      pointer-events: none;
+    }
+
+    .bento-card:hover::before {
+      opacity: 1;
+    }
+
+    .bento-card:hover {
+      border-color: rgba(var(--accent-rgb), 0.35);
+      transform: translateY(-3px);
+    }
+
+    /* Accent Dynamic Utilities */
+    .text-accent {
+      color: var(--accent);
+      transition: color 0.4s ease;
+    }
+
+    .bg-accent {
+      background-color: var(--accent);
+      transition: background-color 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .border-accent {
+      border-color: rgba(var(--accent-rgb), 0.45);
+      transition: border-color 0.4s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #030508;
+      box-shadow: 0 0 25px rgba(var(--accent-rgb), 0.35);
+      transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 0 38px rgba(var(--accent-rgb), 0.6);
+    }
+
+    /* 3D Hero Tilt Card */
+    .tilt-wrapper {
+      perspective: 1200px;
+    }
+
+    .tilt-card {
+      transform-style: preserve-3d;
+      transition: transform 0.12s ease-out;
+    }
+
+    /* Custom Range Slider */
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      background: rgba(255, 255, 255, 0.1);
+      height: 6px;
+      border-radius: 999px;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--accent);
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(var(--accent-rgb), 0.8);
+    }
+
+    /* Subtle Grid Overlay */
+    .bg-grid {
+      background-size: 48px 48px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-white selection:text-black">
+
+  <!-- Interactive Background Canvas -->
+  <canvas id="particle-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
+  <div class="fixed inset-0 bg-grid pointer-events-none z-0"></div>
+  <div class="fixed -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[600px] ambient-glow rounded-full blur-3xl pointer-events-none z-0"></div>
+
+  <!-- Navigation -->
+  <header class="fixed top-4 left-0 right-0 z-50 px-4 sm:px-8">
+    <nav class="max-w-6xl mx-auto glass-panel rounded-full px-5 py-3 flex items-center justify-between shadow-2xl">
+      <a href="#" class="flex items-center gap-2.5 group">
+        <span class="w-3 h-3 rounded-full bg-accent shadow-[0_0_12px_var(--accent)] group-hover:scale-125 transition-transform"></span>
+        <span class="font-display font-bold tracking-wider text-sm sm:text-base">AETHER <span class="text-slate-500 font-normal">// STUDIO</span></span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-8 text-sm text-slate-300">
+        <a href="#capabilities" class="hover:text-white transition-colors">Capabilities</a>
+        <a href="#playground" class="hover:text-white transition-colors">Vibe Engine</a>
+        <a href="#architecture" class="hover:text-white transition-colors">Architecture</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a href="#waitlist" class="btn-primary font-display font-semibold text-xs sm:text-sm px-4 sm:px-5 py-2 rounded-full">
+          Launch Access
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="relative z-10">
+
+    <!-- HERO SECTION -->
+    <section class="pt-36 pb-20 sm:pt-44 sm:pb-28 px-4 sm:px-8 max-w-6xl mx-auto">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Copy -->
+        <div class="lg:col-span-7 space-y-7 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-panel border-accent text-xs font-mono tracking-wide text-slate-200">
+            <span class="w-2 h-2 rounded-full bg-accent animate-ping"></span>
+            <span>SYSTEM v4.2 ONLINE — REAL-TIME SPATIAL ENGINE</span>
+          </div>
+
+          <h1 class="font-display font-bold text-4xl sm:text-6xl lg:text-[64px] leading-[1.05] tracking-tight">
+            Craft digital worlds that <span class="text-accent">feel alive.</span>
+          </h1>
+
+          <p class="text-slate-400 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed">
+            Aether blends sub-millisecond physics, kinetic typography, and adaptive shaders into a single zero-latency web framework built for ambitious brands.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+            <a href="#waitlist" class="btn-primary w-full sm:w-auto font-display font-semibold px-7 py-3.5 rounded-full text-sm sm:text-base flex items-center justify-center gap-2">
+              <span>Request Early Access</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+            </a>
+            <a href="#playground" class="w-full sm:w-auto glass-panel hover:bg-white/10 transition-colors font-display font-medium px-7 py-3.5 rounded-full text-sm sm:text-base text-slate-200 flex items-center justify-center gap-2">
+              <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <span>Customize Theme</span>
+            </a>
+          </div>
+
+          <!-- Micro Metrics -->
+          <div class="pt-4 flex items-center justify-center lg:justify-start gap-8 text-xs font-mono text-slate-400">
+            <div>
+              <span class="text-white font-semibold text-base block">120 FPS</span>
+              NATIVE RENDER
+            </div>
+            <div class="h-7 w-px bg-white/10"></div>
+            <div>
+              <span class="text-white font-semibold text-base block">&lt; 4.2 KB</span>
+              CORE RUNTIME
+            </div>
+            <div class="h-7 w-px bg-white/10"></div>
+            <div>
+              <span class="text-white font-semibold text-base block">99.99%</span>
+              EDGE UPTIME
+            </div>
+          </div>
+        </div>
+
+        <!-- Right 3D Interactive Showcase Card -->
+        <div class="lg:col-span-5 tilt-wrapper">
+          <div id="hero-tilt-card" class="tilt-card glass-panel rounded-3xl p-6 sm:p-7 border border-white/15 shadow-[0_25px_70px_rgba(0,0,0,0.65)] relative overflow-hidden">
+            <!-- Top Bar -->
+            <div class="flex items-center justify-between mb-6">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-amber-400/80"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400/80"></span>
+              </div>
+              <span class="font-mono text-[11px] text-slate-400">NODE // TELEMETRY</span>
+            </div>
+
+            <!-- Holographic Visual Core -->
+            <div class="relative h-56 rounded-2xl bg-black/50 border border-white/10 flex items-center justify-center overflow-hidden mb-6">
+              <div class="absolute inset-0 ambient-glow opacity-80"></div>
+              <!-- Animated Concentric Rings -->
+              <div class="w-36 h-36 rounded-full border border-dashed border-white/20 animate-[spin_18s_linear_infinite] flex items-center justify-center">
+                <div class="w-24 h-24 rounded-full border border-accent animate-[spin_10s_linear_infinite_reverse] flex items-center justify-center">
+                  <div class="w-10 h-10 rounded-full bg-accent shadow-[0_0_30px_var(--accent)] animate-pulse"></div>
+                </div>
+              </div>
+              <!-- Floating Live Coordinate Tag -->
+              <div id="tilt-readout" class="absolute bottom-3 left-3 right-3 flex justify-between font-mono text-[11px] text-slate-300 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10">
+                <span>PITCH: 0.0°</span>
+                <span>YAW: 0.0°</span>
+                <span class="text-accent">SYNCED</span>
+              </div>
+            </div>
+
+            <!-- Interactive Quick Trigger -->
+            <div class="space-y-3">
+              <div class="flex items-center justify-between text-xs">
+                <span class="text-slate-400 font-mono">NEURAL MESH DENSITY</span>
+                <span id="pulse-status" class="text-accent font-mono">OPTIMAL</span>
+              </div>
+              <div class="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
+                <div class="h-full bg-accent w-4/5 rounded-full"></div>
+              </div>
+              <p class="text-xs text-slate-400 pt-1">
+                Move your cursor over this module to inspect 3D spatial tilt response.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- INFINITE TICKER MARQUEE -->
+    <div class="border-y border-white/10 bg-black/40 backdrop-blur-md py-4 overflow-hidden select-none">
+      <div class="flex whitespace-nowrap animate-marquee font-mono text-xs sm:text-sm tracking-widest text-slate-400">
+        <div class="flex items-center gap-10 mx-5">
+          <span>✦ ZERO-LATENCY SHADERS</span>
+          <span class="text-accent">✦ KINETIC UI PRIMITIVES</span>
+          <span>✦ EDGE-FIRST ARCHITECTURE</span>
+          <span class="text-accent">✦ 120HZ PHYSICS ENGINE</span>
+          <span>✦ PROCEDURAL AUDIO REACTIVITY</span>
+          <span class="text-accent">✦ ADAPTIVE COLOR MATRIX</span>
+        </div>
+        <div class="flex items-center gap-10 mx-5" aria-hidden="true">
+          <span>✦ ZERO-LATENCY SHADERS</span>
+          <span class="text-accent">✦ KINETIC UI PRIMITIVES</span>
+          <span>✦ EDGE-FIRST ARCHITECTURE</span>
+          <span class="text-accent">✦ 120HZ PHYSICS ENGINE</span>
+          <span>✦ PROCEDURAL AUDIO REACTIVITY</span>
+          <span class="text-accent">✦ ADAPTIVE COLOR MATRIX</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- BENTO GRID CAPABILITIES -->
+    <section id="capabilities" class="py-24 px-4 sm:px-8 max-w-6xl mx-auto">
+      <div class="max-w-2xl mb-14">
+        <span class="font-mono text-xs text-accent tracking-widest uppercase">Core Architecture</span>
+        <h2 class="font-display font-bold text-3xl sm:text-5xl mt-2 tracking-tight">
+          Engineered for tactile precision.
+        </h2>
+        <p class="text-slate-400 mt-4 text-base sm:text-lg">
+          Every component responds naturally to velocity, cursor proximity, and viewport physics without bloating your bundle.
+        </p>
+      </div>
+
+      <div id="bento-grid" class="grid grid-cols-1 md:grid-cols-6 gap-5">
+        
+        <!-- Card 1 (Large) -->
+        <div class="bento-card md:col-span-4 rounded-3xl p-7 sm:p-8 flex flex-col justify-between min-h-[260px]">
+          <div class="w-11 h-11 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-accent mb-6">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <div>
+            <h3 class="font-display font-semibold text-xl sm:text-2xl text-white">GPU-Accelerated Canvas Pipeline</h3>
+            <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-lg">
+              Automatically scales particle density and lighting complexity based on device refresh rate and thermal headroom.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bento-card md:col-span-2 rounded-3xl p-7 sm:p-8 flex flex-col justify-between min-h-[260px]">
+          <div class="w-11 h-11 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-accent mb-6">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          </div>
+          <div>
+            <h3 class="font-display font-semibold text-xl text-white">Zero-Trust Edge Auth</h3>
+            <p class="text-slate-400 text-sm mt-2">
+              Cryptographic session tokens verified at the nearest global PoP in under 8ms.
+            </p>
