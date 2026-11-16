@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fierce &amp; Fabulous — Daily Planner App</title>
+  <!-- Cursive & Clean Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pacifico&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --pink: #ffdef6;
+      --black: #000000;
+      --cream: #faf1e6;
+      --red: #d90429;
+      --red-dark: #9b001c;
+      --gold-tan: #d89b56;
+      /* Seamless SVG Leopard Pattern matching your attached photo as a built-in fallback */
+      --leopard-svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Crect width='160' height='160' fill='%23e5b378'/%3E%3Cg fill='%23000000'%3E%3Cpath d='M25,18 C35,12 48,20 45,32 C42,43 27,45 19,36 C13,29 17,22 25,18 Z'/%3E%3Cpath d='M27,23 C33,20 39,24 37,30 C35,35 28,36 24,31 Z' fill='%23b56a2c'/%3E%3Cpath d='M95,15 C108,12 118,22 114,34 C110,45 94,44 88,34 C83,25 87,17 95,15 Z'/%3E%3Cpath d='M97,21 C104,19 109,24 107,30 C105,36 96,35 93,29 Z' fill='%23b56a2c'/%3E%3Cpath d='M62,55 C74,50 85,60 81,72 C77,83 61,82 55,72 C50,64 54,58 62,55 Z'/%3E%3Cpath d='M64,61 C70,58 76,63 74,69 C72,74 63,74 60,68 Z' fill='%23b56a2c'/%3E%3Cpath d='M132,68 C144,64 153,75 148,87 C144,97 128,96 123,85 C119,77 123,71 132,68 Z'/%3E%3Cpath d='M134,74 C140,71 145,77 143,83 C140,88 132,88 129,82 Z' fill='%23b56a2c'/%3E%3Cpath d='M22,105 C35,99 47,110 42,123 C38,134 21,133 15,121 C10,113 14,108 22,105 Z'/%3E%3Cpath d='M25,111 C31,108 37,113 35,120 C33,125 24,125 21,119 Z' fill='%23b56a2c'/%3E%3Cpath d='M88,115 C101,110 112,121 107,134 C103,145 86,144 80,132 C76,123 80,118 88,115 Z'/%3E%3Cpath d='M90,121 C97,118 103,124 100,130 C98,136 89,135 86,129 Z' fill='%23b56a2c'/%3E%3Ccircle cx='65' cy='18' r='5'/%3E%3Ccircle cx='145' cy='25' r='6'/%3E%3Ccircle cx='18' cy='68' r='5.5'/%3E%3Ccircle cx='102' cy='78' r='5'/%3E%3Ccircle cx='60' cy='138' r='6'/%3E%3Ccircle cx='142' cy='135' r='5.5'/%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background-color: var(--pink);
+      color: var(--black);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 24px 14px 50px;
+      /* Layered leopard print frame + soft pink glow */
+      background-image:
+        radial-gradient(circle at top right, rgba(217, 4, 41, 0.14), transparent 45%),
+        radial-gradient(circle at bottom left, rgba(0, 0, 0, 0.12), transparent 50%),
+        url('download.jpeg'),
+        var(--leopard-svg);
+      background-size: cover, cover, 260px, 160px;
+      background-attachment: fixed;
+    }
+
+    /* Main App Shell */
+    .app-wrapper {
+      width: 100%;
+      max-width: 860px;
+      background-color: var(--cream);
+      border: 5px solid var(--black);
+      border-radius: 28px;
+      box-shadow: 0 18px 0 var(--black), 0 25px 45px rgba(0, 0, 0, 0.45);
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Top Leopard & Red Banner */
+    .app-header {
+      background-image:
+        linear-gradient(135deg, rgba(0, 0, 0, 0.72), rgba(155, 0, 28, 0.78)),
+        url('download.jpeg'),
+        var(--leopard-svg);
+      background-size: cover, 240px, 150px;
+      background-position: center;
+      color: var(--cream);
+      padding: 28px 26px 24px;
+      border-bottom: 5px solid var(--black);
+      text-align: center;
+      position: relative;
+    }
+
+    .sound-toggle {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: var(--pink);
+      color: var(--black);
+      border: 2.5px solid var(--black);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      box-shadow: 3px 3px 0 var(--red);
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .sound-toggle:hover {
+      transform: translateY(-2px);
+      background: var(--cream);
+    }
+
+    .app-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2.6rem, 6vw, 4rem);
+      font-weight: 400;
+      color: var(--pink);
+      text-shadow: 3px 3px 0 var(--black), 0 0 18px rgba(217, 4, 41, 0.9);
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .app-subtitle {
+      font-family: 'Pacifico', cursive;
+      font-size: 1rem;
+      color: var(--cream);
+      letter-spacing: 0.5px;
+      text-shadow: 2px 2px 0 var(--black);
+    }
+
+    .date-pill {
+      display: inline-block;
+      margin-top: 12px;
+      background: var(--red);
+      color: var(--cream);
+      border: 2.5px solid var(--black);
+      padding: 5px 18px;
+      border-radius
