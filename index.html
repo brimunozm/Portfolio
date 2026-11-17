@@ -1,358 +1,269 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AETHER // STUDIO — Next-Gen Spatial Web & Digital Experiences</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <title>Bri's CS Porfoilio</title>
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            display: ['Space Grotesk', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace'],
-          },
-          colors: {
-            void: '#05060a',
-            surface: '#0b0d14',
-          },
-          animation: {
-            'marquee': 'marquee 28s linear infinite',
-            'float': 'float 6s ease-in-out infinite',
-            'pulse-slow': 'pulse 5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-          },
-          keyframes: {
-            marquee: {
-              '0%': { transform: 'translateX(0%)' },
-              '100%': { transform: 'translateX(-50%)' },
-            },
-            float: {
-              '0%, 100%': { transform: 'translateY(0px)' },
-              '50%': { transform: 'translateY(-10px)' },
-            }
-          }
-        }
-      }
-    }
-  </script>
+  <!-- Cursive & Display Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Great+Vibes&family=Pacifico&family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Poppins:wght@400;500;600;700&family=Sacramento&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --accent: #00f0ff;
-      --accent-rgb: 0, 240, 255;
-      --accent-secondary: #7000ff;
-      --accent-secondary-rgb: 112, 0, 255;
+    body { font-family: 'Poppins', sans-serif; margin: 0; padding: 0; }
+    .font-cursive-vibes { font-family: 'Great Vibes', cursive; }
+    .font-cursive-brush { font-family: 'Alex Brush', cursive; }
+    .font-cursive-pacifico { font-family: 'Pacifico', cursive; }
+    .font-cursive-sacramento { font-family: 'Sacramento', cursive; }
+    .font-editorial { font-family: 'Playfair Display', serif; }
+
+    /* Seamless Leopard & Cheetah Fur Print */
+    .leopard-pattern {
+      background-color: #e3a857;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cdefs%3E%3CradialGradient id='furBg' cx='50%25' cy='50%25' r='70%25'%3E%3Cstop offset='0%25' stop-color='%23f7dca8'/%3E%3Cstop offset='60%25' stop-color='%23df9f4c'/%3E%3Cstop offset='100%25' stop-color='%23c47d2b'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width='180' height='180' fill='url(%23furBg)'/%3E%3Cg transform='translate(28,32) rotate(-15)'%3E%3Cellipse cx='0' cy='0' rx='16' ry='12' fill='%239e541c'/%3E%3Cpath d='M-14,-6 C-18,-14 -4,-18 4,-13 C12,-16 20,-8 15,0 C19,9 9,16 1,12 C-8,16 -18,10 -14,2 Z' fill='none' stroke='%230b0908' stroke-width='5.5' stroke-linecap='round' stroke-dasharray='14 5 18 6 12 5'/%3E%3C/g%3E%3Cg transform='translate(115,28) rotate(22)'%3E%3Cellipse cx='0' cy='0' rx='18' ry='13' fill='%23994f18'/%3E%3Cpath d='M-15,-5 C-17,-15 -2,-17 6,-12 C15,-14 21,-5 14,3 C17,11 6,16 -2,11 C-11,15 -19,8 -15,-1 Z' fill='none' stroke='%230b0908' stroke-width='6' stroke-linecap='round' stroke-dasharray='16 6 15 5 14 6'/%3E%3C/g%3E%3Cg transform='translate(72,85) rotate(8)'%3E%3Cellipse cx='0' cy='0' rx='20' ry='15' fill='%23a3581e'/%3E%3Cpath d='M-17,-6 C-19,-16 -3,-19 7,-13 C17,-15 23,-5 16,4 C19,13 7,18 -3,13 C-13,17 -21,9 -17,-2 Z' fill='none' stroke='%230b0908' stroke-width='6.5' stroke-linecap='round' stroke-dasharray='18 6 20 6 15 6'/%3E%3C/g%3E%3Cg transform='translate(152,105) rotate(-28)'%3E%3Cellipse cx='0' cy='0' rx='15' ry='11' fill='%23964d16'/%3E%3Cpath d='M-13,-4 C-15,-12 -2,-15 5,-10 C12,-12 18,-4 12,3 C15,10 5,14 -2,10 C-9,13 -16,7 -13,-1 Z' fill='none' stroke='%230b0908' stroke-width='5.2' stroke-linecap='round' stroke-dasharray='13 5 14 5 11 5'/%3E%3C/g%3E%3Cg transform='translate(32,142) rotate(18)'%3E%3Cellipse cx='0' cy='0' rx='17' ry='13' fill='%239e541c'/%3E%3Cpath d='M-14,-5 C-16,-14 -2,-16 6,-11 C14,-13 19,-4 13,3 C16,11 6,15 -2,11 C-10,14 -17,7 -14,-1 Z' fill='none' stroke='%230b0908' stroke-width='5.8' stroke-linecap='round' stroke-dasharray='15 5 16 6 12 5'/%3E%3C/g%3E%3Cg transform='translate(112,152) rotate(-10)'%3E%3Cellipse cx='0' cy='0' rx='16' ry='12' fill='%238f4814'/%3E%3Cpath d='M-13,-5 C-15,-13 -2,-15 5,-10 C13,-12 18,-4 12,3 C15,10 5,14 -2,10 C-10,13 -16,7 -13,-1 Z' fill='none' stroke='%230b0908' stroke-width='5.5' stroke-linecap='round' stroke-dasharray='14 5 15 5 11 5'/%3E%3C/g%3E%3Cellipse cx='72' cy='24' rx='6' ry='4.5' transform='rotate(-20 72 24)' fill='%230b0908'/%3E%3Cellipse cx='162' cy='48' rx='5.5' ry='4' transform='rotate(15 162 48)' fill='%230b0908'/%3E%3Cellipse cx='20' cy='88' rx='6' ry='4.5' transform='rotate(30 20 88)' fill='%230b0908'/%3E%3Cellipse cx='116' cy='88' rx='5' ry='4' transform='rotate(-12 116 88)' fill='%230b0908'/%3E%3Cellipse cx='72' cy='145' rx='5.5' ry='4' transform='rotate(25 72 145)' fill='%230b0908'/%3E%3Cellipse cx='165' cy='162' rx='5' ry='4' transform='rotate(-18 165 162)' fill='%230b0908'/%3E%3C/svg%3E");
+      background-size: 160px 160px;
     }
 
-    body {
-      background-color: #05060a;
-      color: #f8fafc;
-      overflow-x: hidden;
-    }
-
-    /* Ambient Glow Blobs */
-    .ambient-glow {
-      background: radial-gradient(circle at 50% 50%, rgba(var(--accent-rgb), 0.16), rgba(var(--accent-secondary-rgb), 0.08) 45%, transparent 70%);
-      transition: background 0.6s ease;
-    }
-
-    /* Glassmorphism Cards */
-    .glass-panel {
-      background: rgba(13, 16, 26, 0.65);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    /* Interactive Bento Spotlight */
-    .bento-card {
-      position: relative;
-      background: rgba(13, 16, 26, 0.72);
-      border: 1px solid rgba(255, 255, 255, 0.07);
-      overflow: hidden;
-      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease;
-    }
-
-    .bento-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(
-        500px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-        rgba(var(--accent-rgb), 0.14),
-        transparent 40%
-      );
-      opacity: 0;
-      transition: opacity 0.35s ease;
-      pointer-events: none;
-    }
-
-    .bento-card:hover::before {
-      opacity: 1;
-    }
-
-    .bento-card:hover {
-      border-color: rgba(var(--accent-rgb), 0.35);
-      transform: translateY(-3px);
-    }
-
-    /* Accent Dynamic Utilities */
-    .text-accent {
-      color: var(--accent);
-      transition: color 0.4s ease;
-    }
-
-    .bg-accent {
-      background-color: var(--accent);
-      transition: background-color 0.4s ease, box-shadow 0.4s ease;
-    }
-
-    .border-accent {
-      border-color: rgba(var(--accent-rgb), 0.45);
-      transition: border-color 0.4s ease;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #030508;
-      box-shadow: 0 0 25px rgba(var(--accent-rgb), 0.35);
-      transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 0 38px rgba(var(--accent-rgb), 0.6);
-    }
-
-    /* 3D Hero Tilt Card */
-    .tilt-wrapper {
-      perspective: 1200px;
-    }
-
-    .tilt-card {
-      transform-style: preserve-3d;
-      transition: transform 0.12s ease-out;
-    }
-
-    /* Custom Range Slider */
-    input[type="range"] {
-      -webkit-appearance: none;
-      appearance: none;
-      background: rgba(255, 255, 255, 0.1);
-      height: 6px;
-      border-radius: 999px;
-    }
-
-    input[type="range"]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: var(--accent);
-      cursor: pointer;
-      box-shadow: 0 0 12px rgba(var(--accent-rgb), 0.8);
-    }
-
-    /* Subtle Grid Overlay */
-    .bg-grid {
-      background-size: 48px 48px;
-      background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    .cheetah-pink-pattern {
+      background-color: #ffdef6;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cellipse cx='22' cy='24' rx='7' ry='5' transform='rotate(-18 22 24)' fill='%230a0a0a' fill-opacity='0.85'/%3E%3Cellipse cx='78' cy='18' rx='6' ry='4.5' transform='rotate(24 78 18)' fill='%23d90429' fill-opacity='0.85'/%3E%3Cellipse cx='52' cy='58' rx='8' ry='5.5' transform='rotate(10 52 58)' fill='%230a0a0a' fill-opacity='0.85'/%3E%3Cellipse cx='102' cy='68' rx='6.5' ry='4.5' transform='rotate(-25 102 68)' fill='%230a0a0a' fill-opacity='0.85'/%3E%3Cellipse cx='26' cy='96' rx='7.5' ry='5' transform='rotate(16 26 96)' fill='%23d90429' fill-opacity='0.85'/%3E%3Cellipse cx='84' cy='102' rx='6' ry='4.5' transform='rotate(-14 84 102)' fill='%230a0a0a' fill-opacity='0.85'/%3E%3C/svg%3E");
+      background-size: 110px 110px;
     }
   </style>
 </head>
-<body class="antialiased selection:bg-white selection:text-black">
+<body>
+  <!-- Bri's CS Porfoilio (Editorial Cream & Cheetah Chic) -->
+  <div id="app"></div>
 
-  <!-- Interactive Background Canvas -->
-  <canvas id="particle-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
-  <div class="fixed inset-0 bg-grid pointer-events-none z-0"></div>
-  <div class="fixed -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[600px] ambient-glow rounded-full blur-3xl pointer-events-none z-0"></div>
+  <script>
+    // ADD YOUR NEW PROJECTS TO THIS LIST!
+    // Categories must be: 'Sims', 'Sites', 'Games', or 'Other'
+    const PROJECTS = [
+      {
+        title: 'Simulation 1',
+        category: 'Sims',
+        url: 'sim1.html',
+        description: 'My very first interactive computer science simulation! Click to launch in a new tab.',
+        badge: 'LIVE PROJECT',
+        isPlaceholder: false
+      },
+      {
+        title: 'Website Project (Coming Soon)',
+        category: 'Sites',
+        url: '#',
+        description: 'A future web design project will live right here.',
+        badge: 'SLOT READY',
+        isPlaceholder: true
+      },
+      {
+        title: 'Mini Game (Coming Soon)',
+        category: 'Games',
+        url: '#',
+        description: 'An upcoming browser game built from scratch.',
+        badge: 'SLOT READY',
+        isPlaceholder: true
+      },
+      {
+        title: 'Creative App / Lab (Coming Soon)',
+        category: 'Other',
+        url: '#',
+        description: 'Experimental coding tools and special CS projects.',
+        badge: 'SLOT READY',
+        isPlaceholder: true
+      }
+    ];
 
-  <!-- Navigation -->
-  <header class="fixed top-4 left-0 right-0 z-50 px-4 sm:px-8">
-    <nav class="max-w-6xl mx-auto glass-panel rounded-full px-5 py-3 flex items-center justify-between shadow-2xl">
-      <a href="#" class="flex items-center gap-2.5 group">
-        <span class="w-3 h-3 rounded-full bg-accent shadow-[0_0_12px_var(--accent)] group-hover:scale-125 transition-transform"></span>
-        <span class="font-display font-bold tracking-wider text-sm sm:text-base">AETHER <span class="text-slate-500 font-normal">// STUDIO</span></span>
-      </a>
+    const CATEGORIES = ['All', 'Sims', 'Sites', 'Games', 'Other'];
+    let activeCategory = 'All';
 
-      <div class="hidden md:flex items-center gap-8 text-sm text-slate-300">
-        <a href="#capabilities" class="hover:text-white transition-colors">Capabilities</a>
-        <a href="#playground" class="hover:text-white transition-colors">Vibe Engine</a>
-        <a href="#architecture" class="hover:text-white transition-colors">Architecture</a>
-      </div>
+    function filterCategory(cat) {
+      activeCategory = cat;
+      render();
+    }
 
-      <div class="flex items-center gap-3">
-        <a href="#waitlist" class="btn-primary font-display font-semibold text-xs sm:text-sm px-4 sm:px-5 py-2 rounded-full">
-          Launch Access
-        </a>
-      </div>
-    </nav>
-  </header>
+    function render() {
+      const list = activeCategory === 'All'
+        ? PROJECTS
+        : PROJECTS.filter(p => p.category === activeCategory);
 
-  <!-- Main Content -->
-  <main class="relative z-10">
-
-    <!-- HERO SECTION -->
-    <section class="pt-36 pb-20 sm:pt-44 sm:pb-28 px-4 sm:px-8 max-w-6xl mx-auto">
-      <div class="grid lg:grid-cols-12 gap-12 items-center">
-        
-        <!-- Left Copy -->
-        <div class="lg:col-span-7 space-y-7 text-center lg:text-left">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-panel border-accent text-xs font-mono tracking-wide text-slate-200">
-            <span class="w-2 h-2 rounded-full bg-accent animate-ping"></span>
-            <span>SYSTEM v4.2 ONLINE — REAL-TIME SPATIAL ENGINE</span>
-          </div>
-
-          <h1 class="font-display font-bold text-4xl sm:text-6xl lg:text-[64px] leading-[1.05] tracking-tight">
-            Craft digital worlds that <span class="text-accent">feel alive.</span>
-          </h1>
-
-          <p class="text-slate-400 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed">
-            Aether blends sub-millisecond physics, kinetic typography, and adaptive shaders into a single zero-latency web framework built for ambitious brands.
-          </p>
-
-          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
-            <a href="#waitlist" class="btn-primary w-full sm:w-auto font-display font-semibold px-7 py-3.5 rounded-full text-sm sm:text-base flex items-center justify-center gap-2">
-              <span>Request Early Access</span>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-            </a>
-            <a href="#playground" class="w-full sm:w-auto glass-panel hover:bg-white/10 transition-colors font-display font-medium px-7 py-3.5 rounded-full text-sm sm:text-base text-slate-200 flex items-center justify-center gap-2">
-              <svg class="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-              <span>Customize Theme</span>
-            </a>
-          </div>
-
-          <!-- Micro Metrics -->
-          <div class="pt-4 flex items-center justify-center lg:justify-start gap-8 text-xs font-mono text-slate-400">
-            <div>
-              <span class="text-white font-semibold text-base block">120 FPS</span>
-              NATIVE RENDER
-            </div>
-            <div class="h-7 w-px bg-white/10"></div>
-            <div>
-              <span class="text-white font-semibold text-base block">&lt; 4.2 KB</span>
-              CORE RUNTIME
-            </div>
-            <div class="h-7 w-px bg-white/10"></div>
-            <div>
-              <span class="text-white font-semibold text-base block">99.99%</span>
-              EDGE UPTIME
-            </div>
-          </div>
-        </div>
-
-        <!-- Right 3D Interactive Showcase Card -->
-        <div class="lg:col-span-5 tilt-wrapper">
-          <div id="hero-tilt-card" class="tilt-card glass-panel rounded-3xl p-6 sm:p-7 border border-white/15 shadow-[0_25px_70px_rgba(0,0,0,0.65)] relative overflow-hidden">
-            <!-- Top Bar -->
-            <div class="flex items-center justify-between mb-6">
-              <div class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-                <span class="w-2.5 h-2.5 rounded-full bg-amber-400/80"></span>
-                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400/80"></span>
+      const template = `
+        <div class="min-h-screen bg-[#faf1e6] text-[#0a0a0a] pb-16">
+          <!-- Split Editorial Header -->
+          <div class="max-w-6xl mx-auto px-4 sm:px-8 pt-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 rounded-[2rem] overflow-hidden border-2 border-[#0a0a0a] shadow-xl bg-[#ffdef6] mb-10">
+              <div class="lg:col-span-8 p-8 sm:p-12 flex flex-col justify-center">
+                <span class="text-xs font-extrabold uppercase tracking-[0.25em] text-[#d90429] mb-2">Official Project Archive</span>
+                <h1 class="font-cursive-vibes text-6xl sm:text-7xl md:text-8xl text-[#0a0a0a] leading-none">
+                  Bri's CS Porfoilio
+                </h1>
+                <p class="mt-4 text-sm sm:text-base text-[#0a0a0a]/85 max-w-lg">
+                  Explore my collection of simulations, websites, games, and coding experiments.
+                </p>
               </div>
-              <span class="font-mono text-[11px] text-slate-400">NODE // TELEMETRY</span>
-            </div>
-
-            <!-- Holographic Visual Core -->
-            <div class="relative h-56 rounded-2xl bg-black/50 border border-white/10 flex items-center justify-center overflow-hidden mb-6">
-              <div class="absolute inset-0 ambient-glow opacity-80"></div>
-              <!-- Animated Concentric Rings -->
-              <div class="w-36 h-36 rounded-full border border-dashed border-white/20 animate-[spin_18s_linear_infinite] flex items-center justify-center">
-                <div class="w-24 h-24 rounded-full border border-accent animate-[spin_10s_linear_infinite_reverse] flex items-center justify-center">
-                  <div class="w-10 h-10 rounded-full bg-accent shadow-[0_0_30px_var(--accent)] animate-pulse"></div>
+              <!-- Leopard Print Fashion Panel -->
+              <div class="lg:col-span-4 leopard-pattern min-h-[140px] lg:min-h-full border-t-2 lg:border-t-0 lg:border-l-2 border-[#0a0a0a] flex items-center justify-center p-6">
+                <div class="bg-[#0a0a0a]/90 text-[#faf1e6] px-5 py-3 rounded-2xl border border-[#ffdef6] text-center">
+                  <span class="font-cursive-sacramento text-3xl text-[#ffdef6] block">Created by Bri</span>
+                  <span class="text-[11px] uppercase tracking-widest text-[#d90429] font-bold">CS Portfolio</span>
                 </div>
               </div>
-              <!-- Floating Live Coordinate Tag -->
-              <div id="tilt-readout" class="absolute bottom-3 left-3 right-3 flex justify-between font-mono text-[11px] text-slate-300 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10">
-                <span>PITCH: 0.0°</span>
-                <span>YAW: 0.0°</span>
-                <span class="text-accent">SYNCED</span>
-              </div>
             </div>
 
-            <!-- Interactive Quick Trigger -->
-            <div class="space-y-3">
-              <div class="flex items-center justify-between text-xs">
-                <span class="text-slate-400 font-mono">NEURAL MESH DENSITY</span>
-                <span id="pulse-status" class="text-accent font-mono">OPTIMAL</span>
-              </div>
-              <div class="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
-                <div class="h-full bg-accent w-4/5 rounded-full"></div>
-              </div>
-              <p class="text-xs text-slate-400 pt-1">
-                Move your cursor over this module to inspect 3D spatial tilt response.
-              </p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- INFINITE TICKER MARQUEE -->
-    <div class="border-y border-white/10 bg-black/40 backdrop-blur-md py-4 overflow-hidden select-none">
-      <div class="flex whitespace-nowrap animate-marquee font-mono text-xs sm:text-sm tracking-widest text-slate-400">
-        <div class="flex items-center gap-10 mx-5">
-          <span>✦ ZERO-LATENCY SHADERS</span>
-          <span class="text-accent">✦ KINETIC UI PRIMITIVES</span>
-          <span>✦ EDGE-FIRST ARCHITECTURE</span>
-          <span class="text-accent">✦ 120HZ PHYSICS ENGINE</span>
-          <span>✦ PROCEDURAL AUDIO REACTIVITY</span>
-          <span class="text-accent">✦ ADAPTIVE COLOR MATRIX</span>
-        </div>
-        <div class="flex items-center gap-10 mx-5" aria-hidden="true">
-          <span>✦ ZERO-LATENCY SHADERS</span>
-          <span class="text-accent">✦ KINETIC UI PRIMITIVES</span>
-          <span>✦ EDGE-FIRST ARCHITECTURE</span>
-          <span class="text-accent">✦ 120HZ PHYSICS ENGINE</span>
-          <span>✦ PROCEDURAL AUDIO REACTIVITY</span>
-          <span class="text-accent">✦ ADAPTIVE COLOR MATRIX</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- BENTO GRID CAPABILITIES -->
-    <section id="capabilities" class="py-24 px-4 sm:px-8 max-w-6xl mx-auto">
-      <div class="max-w-2xl mb-14">
-        <span class="font-mono text-xs text-accent tracking-widest uppercase">Core Architecture</span>
-        <h2 class="font-display font-bold text-3xl sm:text-5xl mt-2 tracking-tight">
-          Engineered for tactile precision.
-        </h2>
-        <p class="text-slate-400 mt-4 text-base sm:text-lg">
-          Every component responds naturally to velocity, cursor proximity, and viewport physics without bloating your bundle.
-        </p>
-      </div>
-
-      <div id="bento-grid" class="grid grid-cols-1 md:grid-cols-6 gap-5">
+            <!-- Category Tabs -->
+            <nav aria-label="Project Categories" class="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 mb-10">
+              
+          <button
+            onclick="filterCategory('All')"
+            class="px-5 py-2 rounded-full font-semibold text-sm sm:text-base transition-all cursor-pointer bg-[#0a0a0a] text-[#ffdef6] ring-2 ring-[#d90429] ring-offset-2 ring-offset-[#faf1e6]">
+            All
+          </button>
         
-        <!-- Card 1 (Large) -->
-        <div class="bento-card md:col-span-4 rounded-3xl p-7 sm:p-8 flex flex-col justify-between min-h-[260px]">
-          <div class="w-11 h-11 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-accent mb-6">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-          </div>
+          <button
+            onclick="filterCategory('Sims')"
+            class="px-5 py-2 rounded-full font-semibold text-sm sm:text-base transition-all cursor-pointer bg-[#ffdef6] text-[#0a0a0a] hover:bg-[#d90429] hover:text-white">
+            Sims
+          </button>
+        
+          <button
+            onclick="filterCategory('Sites')"
+            class="px-5 py-2 rounded-full font-semibold text-sm sm:text-base transition-all cursor-pointer bg-[#ffdef6] text-[#0a0a0a] hover:bg-[#d90429] hover:text-white">
+            Sites
+          </button>
+        
+          <button
+            onclick="filterCategory('Games')"
+            class="px-5 py-2 rounded-full font-semibold text-sm sm:text-base transition-all cursor-pointer bg-[#ffdef6] text-[#0a0a0a] hover:bg-[#d90429] hover:text-white">
+            Games
+          </button>
+        
+          <button
+            onclick="filterCategory('Other')"
+            class="px-5 py-2 rounded-full font-semibold text-sm sm:text-base transition-all cursor-pointer bg-[#ffdef6] text-[#0a0a0a] hover:bg-[#d90429] hover:text-white">
+            Other
+          </button>
+        
+            </nav>
+
+            <!-- Grid -->
+            <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+              
+        <article class="animate-card bg-white rounded-3xl border border-[#0a0a0a]/15 shadow-lg overflow-hidden flex flex-col justify-between hover:shadow-2xl transition-shadow">
           <div>
-            <h3 class="font-display font-semibold text-xl sm:text-2xl text-white">GPU-Accelerated Canvas Pipeline</h3>
-            <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-lg">
-              Automatically scales particle density and lighting complexity based on device refresh rate and thermal headroom.
-            </p>
+            <div class="h-3 bg-[#d90429]"></div>
+            <div class="p-7">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-extrabold uppercase tracking-widest text-[#d90429]">Sims</span>
+                <span class="px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-[#faf1e6] text-[#0a0a0a] border border-[#0a0a0a]/15">LIVE PROJECT</span>
+              </div>
+              <h3 class="font-editorial text-2xl font-bold text-[#0a0a0a] mb-2">Simulation 1</h3>
+              <p class="text-sm text-[#0a0a0a]/75 leading-relaxed">My very first interactive computer science simulation! Click to launch in a new tab.</p>
+            </div>
+          </div>
+
+          <div class="px-7 pb-7">
+            <a href="sim1.html" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-full py-3 px-5 rounded-full bg-[#d90429] hover:bg-[#0a0a0a] text-white font-bold text-sm transition-colors">
+                    View Live Project ↗
+                  </a>
+          </div>
+        </article>
+      
+        <article class="animate-card bg-white rounded-3xl border border-[#0a0a0a]/15 shadow-lg overflow-hidden flex flex-col justify-between hover:shadow-2xl transition-shadow">
+          <div>
+            <div class="h-3 bg-[#ffdef6]"></div>
+            <div class="p-7">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-extrabold uppercase tracking-widest text-[#d90429]">Sites</span>
+                <span class="px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-[#faf1e6] text-[#0a0a0a] border border-[#0a0a0a]/15">SLOT READY</span>
+              </div>
+              <h3 class="font-editorial text-2xl font-bold text-[#0a0a0a] mb-2">Website Project (Coming Soon)</h3>
+              <p class="text-sm text-[#0a0a0a]/75 leading-relaxed">A future web design project will live right here. Ready for your next build!</p>
+            </div>
+          </div>
+
+          <div class="px-7 pb-7">
+            <span class="inline-block text-xs font-bold uppercase tracking-wider text-[#0a0a0a]/45">Awaiting Project Upload</span>
+          </div>
+        </article>
+      
+        <article class="animate-card bg-white rounded-3xl border border-[#0a0a0a]/15 shadow-lg overflow-hidden flex flex-col justify-between hover:shadow-2xl transition-shadow">
+          <div>
+            <div class="h-3 bg-[#ffdef6]"></div>
+            <div class="p-7">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-extrabold uppercase tracking-widest text-[#d90429]">Games</span>
+                <span class="px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-[#faf1e6] text-[#0a0a0a] border border-[#0a0a0a]/15">SLOT READY</span>
+              </div>
+              <h3 class="font-editorial text-2xl font-bold text-[#0a0a0a] mb-2">Mini Game (Coming Soon)</h3>
+              <p class="text-sm text-[#0a0a0a]/75 leading-relaxed">An upcoming browser game built from scratch. Stay tuned for playable fun!</p>
+            </div>
+          </div>
+
+          <div class="px-7 pb-7">
+            <span class="inline-block text-xs font-bold uppercase tracking-wider text-[#0a0a0a]/45">Awaiting Project Upload</span>
+          </div>
+        </article>
+      
+        <article class="animate-card bg-white rounded-3xl border border-[#0a0a0a]/15 shadow-lg overflow-hidden flex flex-col justify-between hover:shadow-2xl transition-shadow">
+          <div>
+            <div class="h-3 bg-[#ffdef6]"></div>
+            <div class="p-7">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-extrabold uppercase tracking-widest text-[#d90429]">Other</span>
+                <span class="px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-[#faf1e6] text-[#0a0a0a] border border-[#0a0a0a]/15">SLOT READY</span>
+              </div>
+              <h3 class="font-editorial text-2xl font-bold text-[#0a0a0a] mb-2">Creative App / Lab (Coming Soon)</h3>
+              <p class="text-sm text-[#0a0a0a]/75 leading-relaxed">Experimental coding tools, creative scripts, and special CS projects.</p>
+            </div>
+          </div>
+
+          <div class="px-7 pb-7">
+            <span class="inline-block text-xs font-bold uppercase tracking-wider text-[#0a0a0a]/45">Awaiting Project Upload</span>
+          </div>
+        </article>
+      
+            </section>
           </div>
         </div>
+      `;
+      // Re-render dynamically with active filter
+      const app = document.getElementById('app');
+      app.innerHTML = template;
 
-        <!-- Card 2 -->
-        <div class="bento-card md:col-span-2 rounded-3xl p-7 sm:p-8 flex flex-col justify-between min-h-[260px]">
-          <div class="w-11 h-11 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-accent mb-6">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-          </div>
-          <div>
-            <h3 class="font-display font-semibold text-xl text-white">Zero-Trust Edge Auth</h3>
-            <p class="text-slate-400 text-sm mt-2">
-              Cryptographic session tokens verified at the nearest global PoP in under 8ms.
-            </p>
+      // Update button active states & cards dynamically
+      const nav = app.querySelector('nav');
+      const grid = app.querySelector('section');
+      if (nav && grid) {
+        nav.innerHTML = CATEGORIES.map(cat => {
+          const isActive = cat === activeCategory;
+          return `<button onclick="filterCategory('${cat}')" class="px-5 py-2.5 rounded-full font-bold text-sm sm:text-base cursor-pointer transition-all ${isActive ? 'bg-[#d90429] text-white scale-105 shadow-md' : 'bg-[#faf1e6] text-[#0a0a0a] border border-[#0a0a0a]/20 hover:bg-[#ffdef6]'}">${cat}</button>`;
+        }).join('');
+
+        grid.innerHTML = list.map(proj => `
+          <article class="bg-[#faf1e6] text-[#0a0a0a] rounded-3xl border-2 border-[#0a0a0a] shadow-lg overflow-hidden flex flex-col justify-between">
+            <div>
+              <div class="leopard-pattern h-5 w-full border-b-2 border-[#0a0a0a]"></div>
+              <div class="p-6">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="px-3 py-1 rounded-full text-xs font-extrabold uppercase bg-[#ffdef6] text-[#0a0a0a] border border-[#0a0a0a]">${proj.category}</span>
+                  <span class="text-xs font-bold text-[#d90429]">${proj.badge}</span>
+                </div>
+                <h3 class="text-2xl font-extrabold mb-2">${proj.title}</h3>
+                <p class="text-sm opacity-80">${proj.description}</p>
+              </div>
+            </div>
+            <div class="px-6 pb-6">
+              ${proj.isPlaceholder
+                ? '<div class="w-full py-3 rounded-2xl bg-[#ffdef6]/60 text-center text-sm font-bold opacity-60">Future Upload Slot</div>'
+                : `<a href="${proj.url}" target="_blank" rel="noopener noreferrer" class="block w-full py-3 rounded-2xl bg-[#0a0a0a] hover:bg-[#d90429] text-[#faf1e6] text-center font-bold transition-colors">Open Project ↗</a>`
+              }
+            </div>
+          </article>
+        `).join('');
+      }
+    }
+
+    window.onload = render;
+  </script>
+</body>
+</html>
