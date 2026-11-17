@@ -120,4 +120,781 @@
       color: var(--cream);
       border: 2.5px solid var(--black);
       padding: 5px 18px;
-      border-radius
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      box-shadow: 3px 3px 0 var(--black);
+    }
+
+    /* Navigation Tabs */
+    .nav-tabs {
+      display: flex;
+      background: var(--black);
+      padding: 10px 14px 0;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .tab-btn {
+      background: var(--pink);
+      color: var(--black);
+      border: 3px solid var(--black);
+      border-bottom: none;
+      border-radius: 16px 16px 0 0;
+      padding: 10px 20px;
+      font-family: 'Pacifico', cursive;
+      font-size: 1.05rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      opacity: 0.82;
+    }
+
+    .tab-btn:hover {
+      opacity: 1;
+      transform: translateY(-2px);
+    }
+
+    .tab-btn.active {
+      background: var(--cream);
+      color: var(--red);
+      opacity: 1;
+      transform: translateY(0);
+      box-shadow: inset 0 4px 0 var(--red);
+    }
+
+    /* Main Content Area */
+    .app-body {
+      padding: 24px;
+      background-color: var(--cream);
+    }
+
+    .tab-panel {
+      display: none;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Section Headings */
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+      padding-bottom: 10px;
+      border-bottom: 3px dashed var(--black);
+    }
+
+    .section-title {
+      font-family: 'Pacifico', cursive;
+      font-size: 1.65rem;
+      color: var(--red);
+      text-shadow: 1px 1px 0 var(--black);
+    }
+
+    /* Leopard Accent Strip */
+    .leopard-divider {
+      height: 16px;
+      border-radius: 999px;
+      border: 2.5px solid var(--black);
+      margin: 22px 0;
+      background-image: url('download.jpeg'), var(--leopard-svg);
+      background-size: 180px, 120px;
+      box-shadow: 3px 3px 0 var(--black);
+    }
+
+    /* Form Controls */
+    .input-group {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    input[type="text"], select, textarea {
+      flex: 1;
+      min-width: 180px;
+      padding: 12px 16px;
+      border: 3px solid var(--black);
+      border-radius: 14px;
+      background: var(--pink);
+      color: var(--black);
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      outline: none;
+      box-shadow: 3px 3px 0 var(--black);
+      transition: background 0.2s ease;
+    }
+
+    input[type="text"]:focus, select:focus, textarea:focus {
+      background: #ffffff;
+      border-color: var(--red);
+    }
+
+    .btn-primary {
+      background: var(--red);
+      color: var(--cream);
+      border: 3px solid var(--black);
+      border-radius: 14px;
+      padding: 12px 22px;
+      font-family: 'Pacifico', cursive;
+      font-size: 1.05rem;
+      cursor: pointer;
+      box-shadow: 4px 4px 0 var(--black);
+      transition: transform 0.12s ease, background 0.15s ease;
+    }
+
+    .btn-primary:hover {
+      background: var(--black);
+      color: var(--pink);
+      transform: translate(-1px, -1px);
+    }
+
+    .btn-primary:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0 var(--black);
+    }
+
+    /* Progress Bar */
+    .progress-card {
+      background: var(--pink);
+      border: 3px solid var(--black);
+      border-radius: 18px;
+      padding: 14px 18px;
+      margin-bottom: 20px;
+      box-shadow: 4px 4px 0 var(--black);
+    }
+
+    .progress-top {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 18px;
+      background: var(--cream);
+      border: 2.5px solid var(--black);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--red), var(--black));
+      transition: width 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    /* Task List Items */
+    .task-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .task-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: var(--pink);
+      border: 3px solid var(--black);
+      border-radius: 16px;
+      padding: 12px 16px;
+      box-shadow: 4px 4px 0 var(--black);
+      transition: transform 0.15s ease, background 0.2s ease;
+    }
+
+    .task-item:hover {
+      transform: translateX(3px);
+    }
+
+    .task-item.completed {
+      background: #f3e4ed;
+      opacity: 0.78;
+    }
+
+    .task-item.completed .task-text {
+      text-decoration: line-through;
+      color: #555;
+    }
+
+    .task-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1;
+      cursor: pointer;
+    }
+
+    .custom-check {
+      width: 26px;
+      height: 26px;
+      border: 3px solid var(--black);
+      border-radius: 8px;
+      background: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      color: var(--cream);
+      flex-shrink: 0;
+      transition: background 0.15s ease;
+    }
+
+    .task-item.completed .custom-check {
+      background: var(--red);
+    }
+
+    .task-text {
+      font-weight: 700;
+      font-size: 1.05rem;
+      word-break: break-word;
+    }
+
+    .tag-badge {
+      background: var(--black);
+      color: var(--pink);
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .tag-badge.priority {
+      background: var(--red);
+      color: var(--cream);
+    }
+
+    .delete-btn {
+      background: var(--cream);
+      color: var(--black);
+      border: 2.5px solid var(--black);
+      border-radius: 10px;
+      width: 32px;
+      height: 32px;
+      font-weight: 900;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+
+    .delete-btn:hover {
+      background: var(--red);
+      color: var(--cream);
+    }
+
+    /* Habits Grid */
+    .habits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 16px;
+    }
+
+    .habit-card {
+      background: var(--pink);
+      border: 3px solid var(--black);
+      border-radius: 20px;
+      padding: 18px;
+      box-shadow: 5px 5px 0 var(--black);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .habit-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 10px;
+      background-image: url('download.jpeg'), var(--leopard-svg);
+      background-size: 140px, 100px;
+      border-bottom: 2.5px solid var(--black);
+    }
+
+    .habit-title {
+      font-family: 'Pacifico', cursive;
+      font-size: 1.25rem;
+      color: var(--black);
+      margin-top: 6px;
+    }
+
+    .habit-streak {
+      font-weight: 700;
+      color: var(--red);
+      font-size: 0.95rem;
+    }
+
+    .habit-btn {
+      width: 100%;
+      padding: 10px;
+      border: 2.5px solid var(--black);
+      border-radius: 12px;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      background: var(--cream);
+      color: var(--black);
+      box-shadow: 3px 3px 0 var(--black);
+      transition: all 0.15s ease;
+    }
+
+    .habit-btn.done {
+      background: var(--red);
+      color: var(--cream);
+    }
+
+    /* Mood & Notes */
+    .mood-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+
+    .mood-btn {
+      flex: 1;
+      min-width: 110px;
+      background: var(--pink);
+      border: 3px solid var(--black);
+      border-radius: 16px;
+      padding: 14px 10px;
+      text-align: center;
+      cursor: pointer;
+      font-weight: 700;
+      box-shadow: 4px 4px 0 var(--black);
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .mood-btn span {
+      display: block;
+      font-size: 1.8rem;
+      margin-bottom: 4px;
+    }
+
+    .mood-btn.selected {
+      background: var(--red);
+      color: var(--cream);
+      transform: translateY(-3px);
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 160px;
+      resize: vertical;
+      line-height: 1.5;
+    }
+
+    .footer-note {
+      text-align: center;
+      padding: 14px;
+      background: var(--black);
+      color: var(--pink);
+      font-family: 'Pacifico', cursive;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-wrapper">
+    <!-- Header -->
+    <header class="app-header">
+      <button class="sound-toggle" id="soundToggle" title="Toggle Sound Effects">🔊 SFX: ON</button>
+      <h1 class="app-title">Fierce &amp; Fabulous</h1>
+      <p class="app-subtitle">Your Glam Daily Planner, Habit &amp; Vibe Studio</p>
+      <div class="date-pill" id="todayDate">Loading date...</div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+      <button class="tab-btn active" data-tab="tasks">✨ To-Do List</button>
+      <button class="tab-btn" data-tab="habits">🐆 Glow Habits</button>
+      <button class="tab-btn" data-tab="journal">💋 Mood &amp; Notes</button>
+    </nav>
+
+    <!-- App Body -->
+    <main class="app-body">
+
+      <!-- TAB 1: TO-DO LIST -->
+      <section class="tab-panel active" id="tab-tasks">
+        <div class="section-header">
+          <h2 class="section-title">Today's Power Moves</h2>
+          <span id="taskCounter" style="font-weight:700;">0 / 0 Done</span>
+        </div>
+
+        <div class="progress-card">
+          <div class="progress-top">
+            <span>Slay Meter</span>
+            <span id="progressPercent">0%</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+        </div>
+
+        <form class="input-group" id="taskForm">
+          <input type="text" id="taskInput" placeholder="Add a fabulous goal or task..." required />
+          <select id="taskTag" style="max-width: 165px;">
+            <option value="Glam">💄 Glam</option>
+            <option value="Boss Move">🔥 Boss Move</option>
+            <option value="Self-Care">💅 Self-Care</option>
+            <option value="Errand">👜 Errand</option>
+          </select>
+          <button type="submit" class="btn-primary">+ Add</button>
+        </form>
+
+        <ul class="task-list" id="taskList"></ul>
+      </section>
+
+      <!-- TAB 2: GLOW HABITS -->
+      <section class="tab-panel" id="tab-habits">
+        <div class="section-header">
+          <h2 class="section-title">Daily Glow-Up Streaks</h2>
+        </div>
+
+        <form class="input-group" id="habitForm">
+          <input type="text" id="habitInput" placeholder="New daily habit (e.g., Drink 8 glasses of water)..." required />
+          <button type="submit" class="btn-primary">+ Add Habit</button>
+        </form>
+
+        <div class="habits-grid" id="habitsGrid"></div>
+      </section>
+
+      <!-- TAB 3: MOOD & NOTES -->
+      <section class="tab-panel" id="tab-journal">
+        <div class="section-header">
+          <h2 class="section-title">Current Vibe Check</h2>
+        </div>
+
+        <div class="mood-row" id="moodRow">
+          <div class="mood-btn" data-mood="Fierce"><span>🐆</span>Fierce</div>
+          <div class="mood-btn" data-mood="Iconic"><span>💋</span>Iconic</div>
+          <div class="mood-btn" data-mood="Cozy"><span>🎀</span>Cozy</div>
+          <div class="mood-btn" data-mood="Unstoppable"><span>🔥</span>Unstoppable</div>
+        </div>
+
+        <div class="leopard-divider"></div>
+
+        <div class="section-header">
+          <h2 class="section-title">Secret Diary &amp; Brain Dump</h2>
+          <span id="saveStatus" style="font-weight:700; color:var(--red);">Saved automatically ✨</span>
+        </div>
+
+        <textarea id="notesArea" placeholder="Write your manifestos, ideas, reminders, or shopping lists here..."></textarea>
+      </section>
+
+    </main>
+
+    <footer class="footer-note">
+      Stay Fierce • Stay Fabulous
+    </footer>
+  </div>
+
+  <script>
+    // ==========================================
+    // 1. WEB AUDIO SOUND EFFECTS (NO MUSIC!)
+    // ==========================================
+    let soundEnabled = true;
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    let audioCtx = null;
+
+    function playSFX(type) {
+      if (!soundEnabled) return;
+      if (!audioCtx) audioCtx = new AudioCtx();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+
+      const now = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      if (type === 'click') {
+        // Crisp tactile pop
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(520, now);
+        osc.frequency.exponentialRampToValueAtTime(180, now + 0.06);
+        gain.gain.setValueAtTime(0.18, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
+        osc.start(now);
+        osc.stop(now + 0.065);
+      } else if (type === 'add') {
+        // Upward sparkly chime
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(440, now);
+        osc.frequency.setValueAtTime(660, now + 0.07);
+        gain.gain.setValueAtTime(0.16, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
+        osc.start(now);
+        osc.stop(now + 0.19);
+      } else if (type === 'complete') {
+        // Bright celebratory double-ping
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(587.33, now);       // D5
+        osc.frequency.setValueAtTime(880, now + 0.08);     // A5
+        gain.gain.setValueAtTime(0.2, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+        osc.start(now);
+        osc.stop(now + 0.26);
+      } else if (type === 'delete') {
+        // Soft downward blip
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(300, now);
+        osc.frequency.exponentialRampToValueAtTime(110, now + 0.1);
+        gain.gain.setValueAtTime(0.15, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.11);
+        osc.start(now);
+        osc.stop(now + 0.12);
+      }
+    }
+
+    const soundToggleBtn = document.getElementById('soundToggle');
+    soundToggleBtn.addEventListener('click', () => {
+      soundEnabled = !soundEnabled;
+      soundToggleBtn.textContent = soundEnabled ? '🔊 SFX: ON' : '🔇 SFX: OFF';
+      if (soundEnabled) playSFX('click');
+    });
+
+    // ==========================================
+    // 2. DATE & NAVIGATION TABS
+    // ==========================================
+    const todayDateEl = document.getElementById('todayDate');
+    const options = { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' };
+    todayDateEl.textContent = new Date().toLocaleDateString('en-US', options);
+
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        playSFX('click');
+        tabBtns.forEach(b => b.classList.remove('active'));
+        tabPanels.forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+      });
+    });
+
+    // ==========================================
+    // 3. STATE & LOCAL STORAGE
+    // ==========================================
+    const STORAGE_KEY = 'fierce_fabulous_app_v1';
+    let appData = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {
+      tasks: [
+        { id: 1, text: 'Conquer my top priority today', tag: 'Boss Move', completed: false },
+        { id: 2, text: 'Hydrate & do skincare routine', tag: 'Self-Care', completed: true },
+        { id: 3, text: 'Plan my next creative portfolio piece', tag: 'Glam', completed: false }
+      ],
+      habits: [
+        { id: 101, name: 'Drink 2L Water', streak: 4, doneToday: false },
+        { id: 102, name: '15 Min Stretch / Walk', streak: 7, doneToday: true },
+        { id: 103, name: 'No Doomscrolling Before Bed', streak: 2, doneToday: false }
+      ],
+      mood: 'Fierce',
+      notes: ''
+    };
+
+    function saveData() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
+    }
+
+    // ==========================================
+    // 4. TO-DO LIST LOGIC
+    // ==========================================
+    const taskForm = document.getElementById('taskForm');
+    const taskInput = document.getElementById('taskInput');
+    const taskTag = document.getElementById('taskTag');
+    const taskList = document.getElementById('taskList');
+    const taskCounter = document.getElementById('taskCounter');
+    const progressPercent = document.getElementById('progressPercent');
+    const progressFill = document.getElementById('progressFill');
+
+    function renderTasks() {
+      taskList.innerHTML = '';
+      appData.tasks.forEach(task => {
+        const li = document.createElement('li');
+        li.className = 'task-item' + (task.completed ? ' completed' : '');
+
+        const isPriority = task.tag === 'Boss Move';
+        li.innerHTML = `
+          <div class="task-left">
+            <div class="custom-check">${task.completed ? '✓' : ''}</div>
+            <span class="task-text">${escapeHTML(task.text)}</span>
+          </div>
+          <span class="tag-badge ${isPriority ? 'priority' : ''}">${escapeHTML(task.tag)}</span>
+          <button class="delete-btn" title="Delete">✕</button>
+        `;
+
+        li.querySelector('.task-left').addEventListener('click', () => {
+          task.completed = !task.completed;
+          playSFX(task.completed ? 'complete' : 'click');
+          saveData();
+          renderTasks();
+        });
+
+        li.querySelector('.delete-btn').addEventListener('click', () => {
+          playSFX('delete');
+          appData.tasks = appData.tasks.filter(t => t.id !== task.id);
+          saveData();
+          renderTasks();
+        });
+
+        taskList.appendChild(li);
+      });
+
+      const total = appData.tasks.length;
+      const done = appData.tasks.filter(t => t.completed).length;
+      const pct = total === 0 ? 0 : Math.round((done / total) * 100);
+
+      taskCounter.textContent = `${done} / ${total} Done`;
+      progressPercent.textContent = `${pct}%`;
+      progressFill.style.width = `${pct}%`;
+    }
+
+    taskForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const text = taskInput.value.trim();
+      if (!text) return;
+      appData.tasks.unshift({
+        id: Date.now(),
+        text,
+        tag: taskTag.value,
+        completed: false
+      });
+      taskInput.value = '';
+      playSFX('add');
+      saveData();
+      renderTasks();
+    });
+
+    // ==========================================
+    // 5. HABITS LOGIC
+    // ==========================================
+    const habitForm = document.getElementById('habitForm');
+    const habitInput = document.getElementById('habitInput');
+    const habitsGrid = document.getElementById('habitsGrid');
+
+    function renderHabits() {
+      habitsGrid.innerHTML = '';
+      appData.habits.forEach(habit => {
+        const card = document.createElement('div');
+        card.className = 'habit-card';
+        card.innerHTML = `
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:8px;">
+            <h3 class="habit-title">${escapeHTML(habit.name)}</h3>
+            <button class="delete-btn" style="width:26px; height:26px; font-size:0.8rem;" title="Remove Habit">✕</button>
+          </div>
+          <div class="habit-streak">🔥 ${habit.streak} Day Streak</div>
+          <button class="habit-btn ${habit.doneToday ? 'done' : ''}">
+            ${habit.doneToday ? '✓ Completed Today!' : 'Mark Done Today'}
+          </button>
+        `;
+
+        card.querySelector('.habit-btn').addEventListener('click', () => {
+          habit.doneToday = !habit.doneToday;
+          habit.streak += habit.doneToday ? 1 : -1;
+          if (habit.streak < 0) habit.streak = 0;
+          playSFX(habit.doneToday ? 'complete' : 'click');
+          saveData();
+          renderHabits();
+        });
+
+        card.querySelector('.delete-btn').addEventListener('click', () => {
+          playSFX('delete');
+          appData.habits = appData.habits.filter(h => h.id !== habit.id);
+          saveData();
+          renderHabits();
+        });
+
+        habitsGrid.appendChild(card);
+      });
+    }
+
+    habitForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const name = habitInput.value.trim();
+      if (!name) return;
+      appData.habits.push({
+        id: Date.now(),
+        name,
+        streak: 0,
+        doneToday: false
+      });
+      habitInput.value = '';
+      playSFX('add');
+      saveData();
+      renderHabits();
+    });
+
+    // ==========================================
+    // 6. MOOD & NOTES LOGIC
+    // ==========================================
+    const moodBtns = document.querySelectorAll('.mood-btn');
+    const notesArea = document.getElementById('notesArea');
+    const saveStatus = document.getElementById('saveStatus');
+
+    function renderMoodAndNotes() {
+      moodBtns.forEach(btn => {
+        btn.classList.toggle('selected', btn.dataset.mood === appData.mood);
+      });
+      notesArea.value = appData.notes || '';
+    }
+
+    moodBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        appData.mood = btn.dataset.mood;
+        playSFX('complete');
+        saveData();
+        renderMoodAndNotes();
+      });
+    });
+
+    notesArea.addEventListener('input', () => {
+      appData.notes = notesArea.value;
+      saveData();
+      saveStatus.textContent = 'Saving...';
+      clearTimeout(window.noteTimer);
+      window.noteTimer = setTimeout(() => {
+        saveStatus.textContent = 'Saved automatically ✨';
+      }, 450);
+    });
+
+    function escapeHTML(str) {
+      return str.replace(/[&<>"']/g, m => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      }[m]));
+    }
+
+    // Initial Render
+    renderTasks();
+    renderHabits();
+    renderMoodAndNotes();
+  </script>
+</body>
+</html>
